@@ -65,19 +65,24 @@ class SinglyLinked
     end
   end
 
-  def cat list
+  def cat(list)
     return unless list.is_a?(SinglyLinked)
 
-    if head == tail
-      self.head.next = list.head
-      self.tail = list.head
-      self.length += 1
-    else
-      self.tail.next = list.head
-      self.length   += list.length
-    end
+    self.tail.next = list.head
+    self.tail = list.tail
+    self.length += list.length
+    self.print
   end
 
+  def print
+    ar = []
+    tmp = head
+    until tmp.nil?
+      ar << tmp.data
+      tmp = tmp.next
+    end
+    p ar
+  end
 end
 
 
@@ -100,7 +105,8 @@ end
   sl1 = SinglyLinked.new
   sl2 = SinglyLinked.new
   sl1.insert 1
-  sl2.insert 2
+  sl1.insert 2
+  sl2.insert 3
 
   sl1.cat sl2
 
