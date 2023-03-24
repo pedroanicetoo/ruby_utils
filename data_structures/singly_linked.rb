@@ -1,11 +1,4 @@
-class Node
-  attr_accessor :data, :next
-
-  def initialize(data)
-    self.data = data
-    self.next = nil
-  end
-end
+require_relative 'node'
 
 class SinglyLinked
 
@@ -28,7 +21,7 @@ class SinglyLinked
     end
     self.tail = node
     self.length += 1
-    node
+    self.print
   end
 
   def remove(node)
@@ -49,6 +42,7 @@ class SinglyLinked
       tmp.next = node.next if tmp
     end
     self.length -= 1
+    self.print
   end
 
 
