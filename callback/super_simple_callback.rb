@@ -1,6 +1,7 @@
 require 'observer'
 
 # example extracted: https://stackoverflow.com/a/3638771/21480599
+# example without oberver: https://stackoverflow.com/a/49244040/21480599
 
 module SuperSimpleCallbacks
   include Observable
