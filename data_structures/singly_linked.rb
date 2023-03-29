@@ -21,7 +21,6 @@ class SinglyLinked
     end
     self.tail = node
     self.length += 1
-    self.print
   end
 
   def remove(node)
@@ -42,7 +41,6 @@ class SinglyLinked
       tmp.next = node.next if tmp
     end
     self.length -= 1
-    self.print
   end
 
 
@@ -65,7 +63,6 @@ class SinglyLinked
     self.tail.next = list.head
     self.tail = list.tail
     self.length += list.length
-    self.print
   end
 
   def print
