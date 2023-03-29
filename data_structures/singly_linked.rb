@@ -100,12 +100,10 @@ class SinglyLinked
   end
 
   def print
+    return 'empty' if self.length == 0
+
     ar = []
-    tmp = head
-    until tmp.nil?
-      ar << tmp.data
-      tmp = tmp.next
-    end
+    each { |item| ar << item.data }
     p ar
   end
 end
@@ -169,4 +167,9 @@ end
   -> yes
   -> no
   -> yes
+
+  #print (use the example above)
+
+  sl.print
+  -> [true, false, true]
 =end
