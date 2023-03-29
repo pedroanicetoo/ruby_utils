@@ -65,6 +65,17 @@ class SinglyLinked
     self.length += list.length
   end
 
+  def find_first &predicate
+    return nil unless block_given?
+
+    current = self.head
+    while current
+      return current.data if predicate.call(current.data)
+
+      current = current.next
+    end
+  end
+
   def print
     ar = []
     tmp = head
@@ -79,26 +90,42 @@ end
 
 =begin
   sl = SinglyLinked.new
-
-  # insert
-
+  
+  #insert
   n1 = sl.insert 1
+  -> [1]
   n2 = sl.insert 2
+  -> [1, 2]
   n3 = sl.insert 3
+  -> [1, 2, 3]
 
-  # remove
-
+  #remove
   sl.remove n1 // head case
+  -> [2, 3]
   sl.remove n2 // not head case
+  -> [3]
 
-  # cat
-
+  #cat
   sl1 = SinglyLinked.new
   sl2 = SinglyLinked.new
   sl1.insert 1
+  -> [1]
   sl1.insert 2
+  -> [1, 2]
   sl2.insert 3
-
+  -> [3]
   sl1.cat sl2
+  -> [1, 2, 3]
+
+  #find_first
+  sl = SinglyLinked.new
+  sl.insert({a:'bar', b:10})
+  -> [{a:'foo', b:10}]
+  sl.insert({a:'foo', b:10})
+  -> [{a:'bar', b:10}, {a:'foo', b:10}]
+  sl.insert({a:'foo', b:20})
+  -> [{a:'bar', b:10}, {a:'foo', b:10}, {a:'foo', b:20}]
+  sl.find_first { |item| item[:a] == 'foo' }
+  -> {a:'foo', b: 10}
 
 =end
