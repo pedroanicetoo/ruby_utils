@@ -1,7 +1,13 @@
-require_relative 'node'
+class Node
+  attr_accessor :data, :next
+
+  def initialize(data)
+    self.data = data
+    self.next = nil
+  end
+end
 
 class SinglyLinked
-
   attr_accessor :head, :tail, :length
 
   def initialize
@@ -65,6 +71,12 @@ class SinglyLinked
     self.length += list.length
   end
 
+  def clear
+    while self.length > 0
+      remove(self.head)
+    end
+  end
+
   def find_first &predicate
     return nil unless block_given?
 
@@ -90,7 +102,7 @@ end
 
 =begin
   sl = SinglyLinked.new
-  
+
   #insert
   n1 = sl.insert 1
   -> [1]
@@ -116,6 +128,13 @@ end
   -> [3]
   sl1.cat sl2
   -> [1, 2, 3]
+
+  #clear
+  sl = SinglyLinked.new
+  sl.insert 1
+  sl.insert 2
+  sl.clear
+  -> [] (its not the output, just a visual representation)
 
   #find_first
   sl = SinglyLinked.new
