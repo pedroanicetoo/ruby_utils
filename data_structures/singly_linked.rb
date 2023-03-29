@@ -17,7 +17,7 @@ class SinglyLinked
   end
 
   def insert(data)
-    return unless data
+    return if data.nil?
 
     node = Node.new data
     unless head
@@ -30,7 +30,7 @@ class SinglyLinked
   end
 
   def remove(node)
-    return unless node
+    return if node.nil?
 
     if node == head
       if head.next.nil?
@@ -39,7 +39,7 @@ class SinglyLinked
           self.head = self.head.next
       end
     else
-      return unless find(node)
+      return if find(node).nil?
       tmp = self.head
       while tmp && tmp.next != node
         tmp = tmp.next
@@ -51,7 +51,7 @@ class SinglyLinked
 
 
   def find(node)
-    return unless node
+    return if node.nil?
     return head if node == head
 
     tmp = self.head
@@ -101,8 +101,9 @@ end
 
 
 =begin
-  sl = SinglyLinked.new
+  USAGE EXAMPLES
 
+  sl = SinglyLinked.new
   #insert
   n1 = sl.insert 1
   -> [1]
