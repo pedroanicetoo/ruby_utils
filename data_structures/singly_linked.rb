@@ -88,6 +88,17 @@ class SinglyLinked
     end
   end
 
+  def each
+    return unless block_given?
+
+    current = self.head
+
+    while current
+      yield current
+      current = current.next
+    end
+  end
+
   def print
     ar = []
     tmp = head
@@ -148,4 +159,14 @@ end
   sl.find_first { |item| item[:a] == 'foo' }
   -> {a:'foo', b: 10}
 
+  #each
+  sl = SinglyLinked.new
+  sl.insert true
+  sl.insert false
+  sl.insert true
+
+  sl.each { |x| (x.data == true) ? puts('yes') : puts('no') }
+  -> yes
+  -> no
+  -> yes
 =end
