@@ -25,3 +25,22 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 | `#each` | O(n) |
 | `#print` | O(n) |
 
+## DoubleLinked
+
+| Method | Definition |
+| ---  | -----------|
+| `#head` | O(1) |
+| `#tail` | O(1) |
+| `#length` | O(1) |
+| `#initialize`| O(1) |
+| `#insert(item)` | O(1) |
+| `#remove(item)` | O(1) |
+| `#cat(list)` | O(1) |
+| `#clear` | O(n) |
+| `#find_first(&predicate)` | O(n) |
+| `#each` | O(n) |
+| `#reverse_each` | O(n) |
+| `#print` | O(n) |
+| `#reverse_print` | O(n) |
+| `#find_last(&predicate)` | O(n) |
+
