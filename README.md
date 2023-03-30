@@ -11,7 +11,7 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 
 ## SinglyLinked
 
-| Method | Definition |
+| Method | Complexity |
 | ---  | -----------|
 | `#head` | O(1) |
 | `#tail` | O(1) |
@@ -27,7 +27,7 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 
 ## DoubleLinked
 
-| Method | Definition |
+| Method | Complexity |
 | ---  | -----------|
 | `#head` | O(1) |
 | `#tail` | O(1) |
