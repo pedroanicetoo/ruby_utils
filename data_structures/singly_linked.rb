@@ -110,6 +110,24 @@ end
 
 
 =begin
+
+Interface Complexity
+
+#head                      O(1)
+#tail                      O(1)
+#length                    O(1)
+#initialize                O(1)
+#insert(item)              O(1)
+#remove(item)              O(n)
+#cat(list)                 O(1)
+#clear                     O(n)
+#find_first(&predicate)    O(n)
+#each                      O(n)
+#print                     O(n)
+
+end
+
+=begin
   USAGE EXAMPLES
 
   sl = SinglyLinked.new
