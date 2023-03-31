@@ -53,6 +53,16 @@ class DoubleLinked < SinglyLinked
     @length -= 1
   end
 
+  def cat(list)
+    return unless list.is_a?(SinglyLinked)
+    return list if @length == 0
+
+    list.head.prev = @tail
+    @tail.next = list.head
+    @tail = list.tail
+    @length += list.length
+  end
+
   #TODO: #cat
   #TODO: #find_last
   #TODO: #reverse_each

@@ -66,6 +66,7 @@ class SinglyLinked
 
   def cat(list)
     return unless list.is_a?(SinglyLinked)
+    return list if @head.length == 0
 
     @tail.next = list.head
     @tail = list.tail
