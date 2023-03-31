@@ -27,6 +27,7 @@ class SinglyLinked
     end
     self.tail = node
     self.length += 1
+    node
   end
 
   def remove(node)
@@ -108,30 +109,11 @@ class SinglyLinked
   end
 end
 
-
-=begin
-
-Interface Complexity
-
-#head                      O(1)
-#tail                      O(1)
-#length                    O(1)
-#initialize                O(1)
-#insert(item)              O(1)
-#remove(item)              O(n)
-#cat(list)                 O(1)
-#clear                     O(n)
-#find_first(&predicate)    O(n)
-#each                      O(n)
-#print                     O(n)
-
-end
-
 =begin
   USAGE EXAMPLES
 
   sl = SinglyLinked.new
-  #insert
+  #insert(data)
   n1 = sl.insert 1
   -> [1]
   n2 = sl.insert 2
@@ -139,13 +121,13 @@ end
   n3 = sl.insert 3
   -> [1, 2, 3]
 
-  #remove
+  #remove(node)
   sl.remove n1 // head case
   -> [2, 3]
   sl.remove n2 // not head case
   -> [3]
 
-  #cat
+  #cat(list)
   sl1 = SinglyLinked.new
   sl2 = SinglyLinked.new
   sl1.insert 1
@@ -164,7 +146,7 @@ end
   sl.clear
   -> [] (its not the output, just a visual representation)
 
-  #find_first
+  #find_first &predicate
   sl = SinglyLinked.new
   sl.insert({a:'bar', b:10})
   -> [{a:'foo', b:10}]
@@ -175,7 +157,7 @@ end
   sl.find_first { |item| item[:a] == 'foo' }
   -> {a:'foo', b: 10}
 
-  #each
+  #each &predicate
   sl = SinglyLinked.new
   sl.insert true
   sl.insert false

@@ -1,12 +1,13 @@
+
 require_relative 'singly_linked'
 
 class Node
   attr_accessor :data, :prev, :next
 
   def initialize(data)
-    self.data = data
-    self.prev = nil
-    self.next = nil
+    @data = data
+    @prev = nil
+    @next = nil
   end
 end
 
@@ -24,44 +25,40 @@ class DoubleLinked < SinglyLinked
 
     node = Node.new data
     unless head
-      self.head = node
+      @head = node
     else
-      node.prev = self.tail
-      self.tail.next = node
+      node.prev = @tail
+      @tail.next = node
     end
-    self.tail = node
-    self.length += 1
+    @tail = node
+    @length += 1
+    node
   end
 
-  #TODO: #remove
+  def remove(node)
+    return if node.nil?
+    return if @length == 0
+
+    if node == head
+      if @head.next.nil?
+        @head = @tail = nil
+      else
+        @head = @head.next
+      end
+    else
+      p, n = node.prev, node.next
+      p&.next = n
+      n&.prev = p
+    end
+    @length -= 1
+  end
+
   #TODO: #cat
   #TODO: #find_last
   #TODO: #reverse_each
   #TODO: #reverse_print
 
 end
-
-
-=begin
-
-Interface Complexity
-
-#head                      O(1)
-#tail                      O(1)
-#length                    O(1)
-#initialize                O(1)
-#insert(item)              O(1)
-#remove(item)              O(1)
-#cat(list)                 O(1)
-#clear                     O(n)
-#find_first(&predicate)    O(n)
-#each                      O(n)
-#reverse_each              O(n)
-#print                     O(n)
-#reverse_print             O(n)
-#find_last(&predicate)     O(n)
-
-=end
 
 =begin
   USAGE EXAMPLES
