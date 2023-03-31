@@ -2,8 +2,8 @@ class Node
   attr_accessor :data, :next
 
   def initialize(data)
-    self.data = data
-    self.next = nil
+    @data = data
+    @next = nil
   end
 end
 
@@ -21,12 +21,12 @@ class SinglyLinked
 
     node = Node.new data
     unless head
-      self.head = node
+      @head = node
     else
-      self.tail.next = node
+      @tail.next = node
     end
-    self.tail = node
-    self.length += 1
+    @tail = node
+    @length += 1
     node
   end
 
@@ -35,19 +35,19 @@ class SinglyLinked
 
     if node == head
       if head.next.nil?
-          self.head = self.tail = nil
+          @head = @tail = nil
       else
-          self.head = self.head.next
+          @head = @head.next
       end
     else
       return if find(node).nil?
-      tmp = self.head
+      tmp = @head
       while tmp && tmp.next != node
         tmp = tmp.next
       end
       tmp.next = node.next if tmp
     end
-    self.length -= 1
+    @length -= 1
   end
 
 
@@ -55,7 +55,7 @@ class SinglyLinked
     return if node.nil?
     return head if node == head
 
-    tmp = self.head
+    tmp = @head
     while tmp
       tmp = tmp.next
       if tmp == node
@@ -67,21 +67,21 @@ class SinglyLinked
   def cat(list)
     return unless list.is_a?(SinglyLinked)
 
-    self.tail.next = list.head
-    self.tail = list.tail
-    self.length += list.length
+    @tail.next = list.head
+    @tail = list.tail
+    @length += list.length
   end
 
   def clear
-    while self.length > 0
-      remove(self.head)
+    while @length > 0
+      remove(@head)
     end
   end
 
   def find_first &predicate
     return nil unless block_given?
 
-    current = self.head
+    current = @head
     while current
       return current.data if predicate.call(current.data)
 
@@ -92,7 +92,7 @@ class SinglyLinked
   def each
     return unless block_given?
 
-    current = self.head
+    current = @head
 
     while current
       yield current
@@ -101,7 +101,7 @@ class SinglyLinked
   end
 
   def print
-    return 'empty' if self.length == 0
+    return 'empty' if @length == 0
 
     ar = []
     each { |item| ar << item.data }
