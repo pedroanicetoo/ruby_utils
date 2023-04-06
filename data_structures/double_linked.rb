@@ -84,8 +84,13 @@ class DoubleLinked < SinglyLinked
     end
   end
 
-  #TODO: #reverse_print
+  def reverse_print
+    return 'empty' if @length == 0
 
+    arr = []
+    reverse_each { |item| arr << item.data }
+    p arr
+  end
 end
 
 =begin
@@ -158,6 +163,11 @@ end
   -> no
   -> yes
 
+  #print (use the example above)
+
+  dl.print
+  -> [true, false, true]
+
   #reverse_each
   dl = DoubleLinked.new
   dl.insert true
@@ -169,8 +179,9 @@ end
   -> yes
   -> yes
 
-  #print (use the example above)
+  #reverse_print (use the example above)
 
-  dl.print
-  -> [true, false, true]
+  dl.reverse_print
+  -> [false, true, true]
+
 =end
