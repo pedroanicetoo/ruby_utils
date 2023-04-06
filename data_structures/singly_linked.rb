@@ -94,7 +94,6 @@ class SinglyLinked
     return unless block_given?
 
     current = @head
-
     while current
       yield current
       current = current.next

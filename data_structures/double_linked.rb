@@ -68,13 +68,22 @@ class DoubleLinked < SinglyLinked
     
     current = @tail
     while current
-        return current.data if predicate.call(current.data)
+      return current.data if predicate.call(current.data)
 
-        current = current.prev
+      current = current.prev
     end
   end
 
-  #TODO: #reverse_each
+  def reverse_each
+    return nil unless block_given?
+
+    current = @tail
+    while current
+      yield current
+      current = current.prev
+    end
+  end
+
   #TODO: #reverse_print
 
 end
@@ -147,6 +156,17 @@ end
   dl.each { |x| (x.data == true) ? puts('yes') : puts('no') }
   -> yes
   -> no
+  -> yes
+
+  #reverse_each
+  dl = DoubleLinked.new
+  dl.insert true
+  dl.insert true
+  dl.insert false
+
+  dl.reverse_each { |x| (x.data == true) ? puts('yes') : puts('no') }
+  -> no
+  -> yes
   -> yes
 
   #print (use the example above)
