@@ -54,7 +54,7 @@ class DoubleLinked < SinglyLinked
   end
 
   def cat(list)
-    return unless list.is_a?(SinglyLinked)
+    return unless list.is_a?(DoubleLinked)
     return list if @length == 0
 
     list.head.prev = @tail
@@ -63,8 +63,17 @@ class DoubleLinked < SinglyLinked
     @length += list.length
   end
 
-  #TODO: #cat
-  #TODO: #find_last
+  def find_last &predicate
+    return nil unless block_given?
+    
+    current = @tail
+    while current
+        return current.data if predicate.call(current.data)
+
+        current = current.prev
+    end
+  end
+
   #TODO: #reverse_each
   #TODO: #reverse_print
 
@@ -117,6 +126,17 @@ end
   -> [{a:'bar', b:10}, {a:'foo', b:10}, {a:'foo', b:20}]
   dl.find_first { |item| item[:a] == 'foo' }
   -> {a:'foo', b: 10}
+
+  #find_last
+  dl = DoubleLinked.new
+  dl.insert({a:'bar', b:10})
+  -> [{a:'foo', b:10}]
+  dl.insert({a:'bar', b:20})
+  -> [{a:'bar', b:10}, {a:'bar', b:20}]
+  dl.insert({a:'foo', b:20})
+  -> [{a:'bar', b:10}, {a:'foo', b:10}, {a:'foo', b:20}]
+  dl.find_last { |item| item[:a] == 'bar' }
+  -> {a:'bar', b: 20}
 
   #each
   dl = DoubleLinked.new
