@@ -1,3 +1,4 @@
+require 'pry'
 
 class Node
   attr_accessor :data, :prev, :next
@@ -25,7 +26,8 @@ class CircularLinked
 
     # finds the last node 
     @current = @head
-    while ((i += 1)) < @length
+    i = 0
+    while (i += 1) < @length
       move_next
     end
 
@@ -41,6 +43,49 @@ class CircularLinked
       prev_node.next = new_node
     end
     @length += 1
+  end
+
+  def remove(node)
+    return unless node 
+    return unless @length > 0  
+
+    # head?
+    return remove_next(node) if @length == 1
+    
+    # Find the precedent node to the node we 
+    # want to remove.
+    prev = nil 
+    @current = @head
+    while ((prev = move_next) != node) 
+    end 
+
+    remove_next(prev)
+  end
+
+  # TODO: Fix for some cases 
+  def remove_next(prev_node)
+    return unless @length > 0
+
+      unless prev_node
+        @head = @head.next # default remove
+      else 
+        if prev_node.next == prev_node # prev_node is head
+          @head = nil 
+        else 
+            if @length == 3
+              @head.next = prev_node.next
+              prev_node.next = @head
+            else
+              old = prev_node.next 
+              prev_node.next = prev_node.next&.next
+              if old == @head
+                @head = old.next
+              end 
+            end
+        end
+      end
+
+      @length -= 1
   end
 
   private
