@@ -12,19 +12,19 @@ end
 class CircularLinked
   attr_accessor :head, :length
   attr_writer :current
-  
+
   def initialize
-    @head = nil 
+    @head = nil
     @current = nil
-    @length = 0 
+    @length = 0
   end
 
   def insert(data)
     return if data.nil?
-    return insert_next(nil, data) if @length == 0 
+    return insert_next(nil, data) if @length == 0
     return insert_next(@head, data) if @length == 1
 
-    # finds the last node 
+    # finds the last node
     @current = @head
     i = 0
     while (i += 1) < @length
@@ -38,7 +38,7 @@ class CircularLinked
     new_node = Node.new data
     if prev_node.nil?
       @head = new_node.next = new_node
-    else 
+    else
       new_node.next = prev_node.next
       prev_node.next = new_node
     end
@@ -46,46 +46,39 @@ class CircularLinked
   end
 
   def remove(node)
-    return unless node 
-    return unless @length > 0  
+    return unless node
+    return unless @length > 0
 
     # head?
     return remove_next(node) if @length == 1
-    
-    # Find the precedent node to the node we 
-    # want to remove.
-    prev = nil 
-    @current = @head
-    while ((prev = move_next) != node) 
-    end 
 
+    # Find the precedent node to the node we
+    # want to remove.
+    prev = @head
+    while prev.next != node
+      prev = prev.next
+    end
     remove_next(prev)
   end
 
-  # TODO: Fix for some cases 
   def remove_next(prev_node)
     return unless @length > 0
 
-      unless prev_node
-        @head = @head.next # default remove
-      else 
-        if prev_node.next == prev_node # prev_node is head
-          @head = nil 
-        else 
-            if @length == 3
-              @head.next = prev_node.next
-              prev_node.next = @head
-            else
-              old = prev_node.next 
-              prev_node.next = prev_node.next&.next
-              if old == @head
-                @head = old.next
-              end 
-            end
+    unless prev_node
+      @head = @head.next # default remove
+    else
+      if prev_node.next == prev_node # prev_node is head
+        @head = nil
+      else
+        old = prev_node.next
+        prev_node.next = prev_node.next&.next
+        if old == @head
+          @head = old.next
         end
       end
+    end
 
-      @length -= 1
+    @length -= 1
   end
 
   private
