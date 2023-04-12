@@ -44,3 +44,19 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 | `#reverse_print` | O(n) |
 | `#find_last(&predicate)` | O(n) |
 
+
+## CircularLinked
+
+| Method | Complexity |
+| ---  | -----------|
+| `#head` | O(1) |
+| `#length` | O(1) |
+| `#initialize`| O(1) |
+| `#insert(item)` | O(n) |
+| `#insert_next(prev_node, item)` | O(1) |
+| `#remove(item)` | O(n) |
+| `#remove_next(prev_node)` | O(1) |
+| `#clear` | O(n) |
+| `#full_scan` | O(n) |
+| `#print` | O(n) |
+
