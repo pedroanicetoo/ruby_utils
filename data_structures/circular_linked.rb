@@ -1,5 +1,3 @@
-require 'pry'
-
 class Node
   attr_accessor :data, :prev, :next
 

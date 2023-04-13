@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    benchmark (0.2.1)
+    require_all (3.0.0)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  benchmark
+  require_all
+
+BUNDLED WITH
+   2.4.1
