@@ -1,7 +1,9 @@
-# ruby_utils
-This repository was create for studies porposes based on the articles
+# This is a personal repositories for my personal studies about some programing topics...
 
-https://medium.com/amiralles/mastering-data-structures-in-ruby-linked-lists-708347a30360 
+## data_structures lists
+Was create for studies porposes based on the articles
+
+https://medium.com/amiralles/mastering-data-structures-in-ruby-linked-lists-708347a30360
 
 https://medium.com/amiralles/mastering-data-structures-in-ruby-doubly-linked-lists-e5e5aff5ff67
 
@@ -9,7 +11,7 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 
 # Interface
 
-## SinglyLinked
+### SinglyLinked
 
 | Method | Complexity |
 | ---  | -----------|
@@ -25,7 +27,7 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 | `#each` | O(n) |
 | `#print` | O(n) |
 
-## DoubleLinked
+### DoubleLinked
 
 | Method | Complexity |
 | ---  | -----------|
@@ -45,7 +47,7 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 | `#find_last(&predicate)` | O(n) |
 
 
-## CircularLinked
+### CircularLinked
 
 | Method | Complexity |
 | ---  | -----------|
@@ -59,4 +61,3 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 | `#clear` | O(n) |
 | `#full_scan` | O(n) |
 | `#print` | O(n) |
-
