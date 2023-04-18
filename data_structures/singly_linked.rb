@@ -71,12 +71,14 @@ class SinglyLinked
     @tail.next = list.head
     @tail = list.tail
     @length += list.length
+    self
   end
 
   def clear
     while @length > 0
       remove(@head)
     end
+    self
   end
 
   def find_first &predicate
@@ -84,10 +86,11 @@ class SinglyLinked
 
     current = @head
     while current
-      return current.data if predicate.call(current.data)
+      return current if predicate.call(current.data)
 
       current = current.next
     end
+    current
   end
 
   def each
@@ -113,7 +116,7 @@ end
   USAGE EXAMPLES
 
   sl = SinglyLinked.new
-  #insert(data)
+  #insert(data) => (node)
   n1 = sl.insert 1
   -> [1]
   n2 = sl.insert 2
@@ -121,13 +124,13 @@ end
   n3 = sl.insert 3
   -> [1, 2, 3]
 
-  #remove(node)
+  #remove(node) => (integer)
   sl.remove n1 // head case
   -> [2, 3]
   sl.remove n2 // not head case
   -> [3]
 
-  #cat(list)
+  #cat(list) => (node)
   sl1 = SinglyLinked.new
   sl2 = SinglyLinked.new
   sl1.insert 1
@@ -139,14 +142,14 @@ end
   sl1.cat sl2
   -> [1, 2, 3]
 
-  #clear
+  #clear => (self)
   sl = SinglyLinked.new
   sl.insert 1
   sl.insert 2
   sl.clear
   -> [] (its not the output, just a visual representation)
 
-  #find_first &predicate
+  #find_first &predicate => (node)
   sl = SinglyLinked.new
   sl.insert({a:'bar', b:10})
   -> [{a:'foo', b:10}]
@@ -157,7 +160,7 @@ end
   sl.find_first { |item| item[:a] == 'foo' }
   -> {a:'foo', b: 10}
 
-  #each &predicate
+  #each &predicate => (nil || block return)
   sl = SinglyLinked.new
   sl.insert true
   sl.insert false
@@ -168,7 +171,7 @@ end
   -> no
   -> yes
 
-  #print (use the example above)
+  #print => (Array)
 
   sl.print
   -> [true, false, true]

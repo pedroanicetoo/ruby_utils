@@ -51,6 +51,7 @@ class DoubleLinked < SinglyLinked
       n&.prev = p
     end
     @length -= 1
+    self
   end
 
   def cat(list)
@@ -65,10 +66,10 @@ class DoubleLinked < SinglyLinked
 
   def find_last &predicate
     return nil unless block_given?
-    
+
     current = @tail
     while current
-      return current.data if predicate.call(current.data)
+      return current if predicate.call(current.data)
 
       current = current.prev
     end
@@ -97,7 +98,7 @@ end
   USAGE EXAMPLES
 
   dl = DoubleLinked.new
-  #insert
+  #insert => (node)
   n1 = dl.insert 1
   -> [1]
   n2 = dl.insert 2
@@ -105,13 +106,13 @@ end
   n3 = dl.insert 3
   -> [1, 2, 3]
 
-  #remove
+  #remove => (self)
   dl.remove n1 // head case
   -> [2, 3]
   dl.remove n2 // not head case
   -> [3]
 
-  #cat
+  #cat => (self)
   dl1 = DoubleLinked.new
   dl2 = DoubleLinked.new
   dl1.insert 1
@@ -123,14 +124,14 @@ end
   dl1.cat dl2
   -> [1, 2, 3]
 
-  #clear
+  #clear => (self)
   dl = DoubleLinked.new
   dl.insert 1
   dl.insert 2
   dl.clear
   -> [] (its not the output, just a visual representation)
 
-  #find_first
+  #find_first &predicate => (node)
   dl = DoubleLinked.new
   dl.insert({a:'bar', b:10})
   -> [{a:'foo', b:10}]
@@ -141,7 +142,7 @@ end
   dl.find_first { |item| item[:a] == 'foo' }
   -> {a:'foo', b: 10}
 
-  #find_last
+  #find_last &predicate => (node)
   dl = DoubleLinked.new
   dl.insert({a:'bar', b:10})
   -> [{a:'foo', b:10}]
@@ -152,7 +153,7 @@ end
   dl.find_last { |item| item[:a] == 'bar' }
   -> {a:'bar', b: 20}
 
-  #each
+  #each &predicate => (nil || block return)
   dl = DoubleLinked.new
   dl.insert true
   dl.insert false
@@ -163,12 +164,12 @@ end
   -> no
   -> yes
 
-  #print (use the example above)
+  #print => (Array)
 
   dl.print
   -> [true, false, true]
 
-  #reverse_each
+  #reverse_each &predicate => (nil || block return)
   dl = DoubleLinked.new
   dl.insert true
   dl.insert true
@@ -179,7 +180,7 @@ end
   -> yes
   -> yes
 
-  #reverse_print (use the example above)
+  #reverse_print => (Array)
 
   dl.reverse_print
   -> [false, true, true]
