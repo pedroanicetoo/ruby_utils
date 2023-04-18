@@ -8,8 +8,7 @@ class Node
 end
 
 class CircularLinked
-  attr_accessor :head, :length
-  attr_writer :current
+  attr_accessor :head, :length, :current
 
   def initialize
     @head = nil
@@ -41,6 +40,7 @@ class CircularLinked
       prev_node.next = new_node
     end
     @length += 1
+    new_node
   end
 
   def remove(node)
@@ -57,6 +57,7 @@ class CircularLinked
       prev = prev.next
     end
     remove_next(prev)
+    self
   end
 
   def remove_next(prev_node)
@@ -77,12 +78,51 @@ class CircularLinked
     end
 
     @length -= 1
+    self
   end
 
-  private
+  def clear
+    while @length > 0
+      remove @head
+    end
+    self
+  end
 
   def move_next
+    return 'empty list!' if @current.nil?
+
     @current = @current&.next
+    @current
+  end
+
+  def full_scan
+    return nil unless block_given?
+    @current = @head
+
+    loop do
+      yield self.current
+      break if (move_next == @head)
+    end
+  end
+
+  def find_first &predicate
+    return nil unless block_given?
+
+    @current = @head
+
+    loop do
+      return @current if predicate.call(@current.data)
+
+      break if (move_next == @head)
+    end
+  end
+
+  def print
+    return "empty list!" if @length == 0
+
+    arr = []
+    full_scan { |item| arr << item.data }
+    p arr
   end
 
 end
@@ -92,11 +132,58 @@ end
   USAGE EXAMPLES
 
   cl = CircularLinked.new
-  #insert
+  #insert => (node)
   n1 = cl.insert 1
-  -> [1]
+  ... -> [1] -> [1] ...
   n2 = cl.insert 2
-  -> [1, 2]
+  ... -> [1] -> [2] -> [1] -> [2] ...
+  n3 = cl.insert 3
+  ... -> [1] -> [2] -> [3] -> [1] -> [2] -> [3] ...
+
+  #insert_next => (self)
+  cl.insert_next(n2, 4)
+  ... -> [1] -> [2] -> [4] -> [3] -> [1] -> [2] -> [4] -> [3] ...
+
+  #remove => (self)
+  cl.remove n1 // head case
+  ... -> [1] -> [2] -> [1] -> [2] ...
+  cl.remove n2 // not head case
+  ... -> [3] -> [3] ...
+
+  #remove_next => (integer)
+  (with a list: ... -> [1] -> [2] -> [3] -> [1] -> [2] -> [3] ...)
+  cl.remove_next(n1) # removing [2] node
+  ... -> [1] -> [3] -> [1] -> [3] ...
+
+  #clear => (self)
+  cl.insert 1
+  cl.insert 2
+  cl.clear
+  -> [] (its not the output, just a visual representation)
+
+  #move_next => (node)
+  n1 = cl.insert 1
+  n2 = cl.insert 2
+  cl.current = n1 // set current
+  cl.move_next
+  -> [2] (n2)
+
+  #full_scan => (block return || nil)
+  (with a list: ... -> [1] -> [2] -> [3] -> [1] -> [2] -> [3] ...)
+  cl.full_scan { |x| p x.data if x.data <= 2}
+  -> 1
+  -> 2
+  -> nil
+
+  #find_first &predicate => (node || nil)
+  (with a list: ... -> [1] -> [2] -> [3] -> [1] -> [2] -> [3] ...)
+  cl.find_first { |node| p node if node.data == 2}
+  -> [2] // #<Node:0x00007f1d0139f358 ...>>>>
+
+  #print => (Array)
+  cl = CircularLinked.new
+  n1 = cl.insert 1
+  n2 = cl.insert 2
   n3 = cl.insert 3
   -> [1, 2, 3]
 
