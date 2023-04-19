@@ -13,51 +13,45 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 
 ### SinglyLinked
 
-| Method | Complexity |
-| ---  | -----------|
-| `#head` | O(1) |
-| `#tail` | O(1) |
-| `#length` | O(1) |
-| `#initialize`| O(1) |
-| `#insert(item)` | O(1) |
-| `#remove(item)` | O(n) |
-| `#cat(list)` | O(1) |
-| `#clear` | O(n) |
-| `#find_first(&predicate)` | O(n) |
-| `#each` | O(n) |
-| `#print` | O(n) |
+| Method | Summary | Complexity |
+| ------ | ------- |-----------|
+|`#initialize`|`Initializes an Empty list`|O(1)|
+|`#insert(item)`|`Inserts a new item into the list`|O(1)|
+|`#remove(item)`|`Removes an item from the list`|O(n)|
+|`#cat(list)`|`Catenates a list to the current list`|O(1)|
+|`#clear`|`Remove all items from the list`|O(n)|
+|`#find_first(&predicate)`|`Returns the first element that matches the predicate`|O(n)|
+|`#each`|`loops over the list yielding one element at time.`|O(n)|
+|`#print`|`Prints the contents of the list`|O(n)|
 
 ### DoubleLinked
 
-| Method | Complexity |
-| ---  | -----------|
-| `#head` | O(1) |
-| `#tail` | O(1) |
-| `#length` | O(1) |
-| `#initialize`| O(1) |
-| `#insert(item)` | O(1) |
-| `#remove(item)` | O(1) |
-| `#cat(list)` | O(1) |
-| `#clear` | O(n) |
-| `#find_first(&predicate)` | O(n) |
-| `#each` | O(n) |
-| `#reverse_each` | O(n) |
-| `#print` | O(n) |
-| `#reverse_print` | O(n) |
-| `#find_last(&predicate)` | O(n) |
+| Method | Summary | Complexity |
+| ------ | ------- |-----------|
+|`#initialize`|`Initializes an Empty list`|O(1)|
+|`#insert(item)`|`Inserts a new item into the list`|O(1)|
+|`#remove(item)`|`Removes an item from the list`|O(1)|
+|`#cat(list)`|`Catenates a list to the current list`|O(1)|
+|`#clear`|`Remove all items from the list`|O(n)|
+|`#find_first(&predicate)`|`Returns the first element that matches the predicate`|O(n)|
+|`#each`|`loops over the list yielding one element at time.`|O(n)|
+|`#print`|`Prints the contents of the list`|O(n)|
+|`#find_last(&predicate)`|`Returns the last element that matches the predicate`|O(n)|
+|`#reverse_print`|`Loops over the list backward yielding one element at a time.`|O(n)|
+|`#reverse_each`|`Prints the contents of the list backward`|O(n)|
 
 
 ### CircularLinked
 
-| Method | Complexity |
-| ---  | -----------|
-| `#head` | O(1) |
-| `#length` | O(1) |
-| `#initialize`| O(1) |
-| `#insert(item)` | O(n) |
-| `#insert_next(prev_node, item)` | O(1) |
-| `#remove(item)` | O(n) |
-| `#remove_next(prev_node)` | O(1) |
-| `#clear` | O(n) |
-| `#full_scan` | O(n) |
-| `#print` | O(n) |
+| Method | Summary | Complexity |
+| ------ | ------- |-----------|
+|`#initialize`|`Initializes an Empty list`|O(1)|
+|`#insert(item)`|`Inserts a new item into the list`|O(n)|
+|`#insert_next(prev_node,item)`|`Inserts a new item into the list, right next to the previous node.`|O(1)|
+|`#remove(item)`|`Removes an item from the list`|O(n)|
+|`#remove_next(prev_node)`|`Removes the element the is next to previous node`|O(1)|
+|`#clear`|`Remove all items from the list`|O(n)|
+|`#find_first(&predicate)`|`Returns the first element that matches the predicate`|O(n)|
+|`#move_next`|`Sets the current node to point to the next node in the list`|O(1)|
+|`#full_scan`|`Traverses all elements in the list starting from the head node`|O(n)|
+|`#print`|`Prints the contents of the list`|O(n)|
