@@ -1,6 +1,6 @@
 # This is a personal repositories for my personal studies about some programing topics...
 
-## Data_structures types
+## Data structures types
 Was create for studies porposes based on the articles
 
 https://medium.com/amiralles/mastering-data-structures-in-ruby-linked-lists-708347a30360 \
