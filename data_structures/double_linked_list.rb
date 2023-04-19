@@ -1,5 +1,5 @@
 
-require_relative 'singly_linked'
+require_relative 'linked_list'
 
 class Node
   attr_accessor :data, :prev, :next
@@ -11,7 +11,7 @@ class Node
   end
 end
 
-class DoubleLinked < SinglyLinked
+class DubleLinkedList < LinkedList
   attr_accessor :head, :tail, :length
 
   def initialize
@@ -55,7 +55,7 @@ class DoubleLinked < SinglyLinked
   end
 
   def cat(list)
-    return unless list.is_a?(DoubleLinked)
+    return unless list.is_a?(DubleLinkedList)
     return list if @length == 0
 
     list.head.prev = @tail
@@ -97,7 +97,7 @@ end
 =begin
   USAGE EXAMPLES
 
-  dl = DoubleLinked.new
+  dl = DubleLinkedList.new
   #insert => (node)
   n1 = dl.insert 1
   -> [1]
@@ -113,8 +113,8 @@ end
   -> [3]
 
   #cat => (self)
-  dl1 = DoubleLinked.new
-  dl2 = DoubleLinked.new
+  dl1 = DubleLinkedList.new
+  dl2 = DubleLinkedList.new
   dl1.insert 1
   -> [1]
   dl1.insert 2
@@ -125,14 +125,14 @@ end
   -> [1, 2, 3]
 
   #clear => (self)
-  dl = DoubleLinked.new
+  dl = DubleLinkedList.new
   dl.insert 1
   dl.insert 2
   dl.clear
   -> [] (its not the output, just a visual representation)
 
   #find_first &predicate => (node)
-  dl = DoubleLinked.new
+  dl = DubleLinkedList.new
   dl.insert({a:'bar', b:10})
   -> [{a:'foo', b:10}]
   dl.insert({a:'foo', b:10})
@@ -143,7 +143,7 @@ end
   -> {a:'foo', b: 10}
 
   #find_last &predicate => (node)
-  dl = DoubleLinked.new
+  dl = DubleLinkedList.new
   dl.insert({a:'bar', b:10})
   -> [{a:'foo', b:10}]
   dl.insert({a:'bar', b:20})
@@ -154,7 +154,7 @@ end
   -> {a:'bar', b: 20}
 
   #each &predicate => (nil || block return)
-  dl = DoubleLinked.new
+  dl = DubleLinkedList.new
   dl.insert true
   dl.insert false
   dl.insert true
@@ -170,7 +170,7 @@ end
   -> [true, false, true]
 
   #reverse_each &predicate => (nil || block return)
-  dl = DoubleLinked.new
+  dl = DubleLinkedList.new
   dl.insert true
   dl.insert true
   dl.insert false

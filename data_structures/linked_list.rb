@@ -7,7 +7,7 @@ class Node
   end
 end
 
-class SinglyLinked
+class LinkedList
   attr_accessor :head, :tail, :length
 
   def initialize
@@ -65,7 +65,7 @@ class SinglyLinked
   end
 
   def cat(list)
-    return unless list.is_a?(SinglyLinked)
+    return unless list.is_a?(LinkedList)
     return list if @head.length == 0
 
     @tail.next = list.head
@@ -115,7 +115,7 @@ end
 =begin
   USAGE EXAMPLES
 
-  sl = SinglyLinked.new
+  sl = LinkedList.new
   #insert(data) => (node)
   n1 = sl.insert 1
   -> [1]
@@ -131,8 +131,8 @@ end
   -> [3]
 
   #cat(list) => (node)
-  sl1 = SinglyLinked.new
-  sl2 = SinglyLinked.new
+  sl1 = LinkedList.new
+  sl2 = LinkedList.new
   sl1.insert 1
   -> [1]
   sl1.insert 2
@@ -143,14 +143,14 @@ end
   -> [1, 2, 3]
 
   #clear => (self)
-  sl = SinglyLinked.new
+  sl = LinkedList.new
   sl.insert 1
   sl.insert 2
   sl.clear
   -> [] (its not the output, just a visual representation)
 
   #find_first &predicate => (node)
-  sl = SinglyLinked.new
+  sl = LinkedList.new
   sl.insert({a:'bar', b:10})
   -> [{a:'foo', b:10}]
   sl.insert({a:'foo', b:10})
@@ -161,7 +161,7 @@ end
   -> {a:'foo', b: 10}
 
   #each &predicate => (nil || block return)
-  sl = SinglyLinked.new
+  sl = LinkedList.new
   sl.insert true
   sl.insert false
   sl.insert true

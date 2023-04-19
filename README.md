@@ -9,9 +9,11 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-doubly-linked-lis
 
 https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-lists-8bd35769cc5
 
+
+
 # Interface
 
-### SinglyLinked
+### LinkedList
 
 | Method | Summary | Complexity |
 | ------ | ------- |-----------|
@@ -24,7 +26,7 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 |`#each`|`loops over the list yielding one element at time.`|O(n)|
 |`#print`|`Prints the contents of the list`|O(n)|
 
-### DoubleLinked
+### DoubleLinkedList
 
 | Method | Summary | Complexity |
 | ------ | ------- |-----------|
@@ -41,7 +43,7 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 |`#reverse_each`|`Prints the contents of the list backward`|O(n)|
 
 
-### CircularLinked
+### CircularList
 
 | Method | Summary | Complexity |
 | ------ | ------- |-----------|

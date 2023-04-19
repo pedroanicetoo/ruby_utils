@@ -7,7 +7,7 @@ class Node
   end
 end
 
-class CircularLinked
+class CircularList
   attr_accessor :head, :length, :current
 
   def initialize
@@ -131,7 +131,7 @@ end
 =begin
   USAGE EXAMPLES
 
-  cl = CircularLinked.new
+  cl = CircularList.new
   #insert => (node)
   n1 = cl.insert 1
   ... -> [1] -> [1] ...
@@ -181,7 +181,7 @@ end
   -> [2] // #<Node:0x00007f1d0139f358 ...>>>>
 
   #print => (Array)
-  cl = CircularLinked.new
+  cl = CircularList.new
   n1 = cl.insert 1
   n2 = cl.insert 2
   n3 = cl.insert 3
