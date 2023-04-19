@@ -1,6 +1,6 @@
 # This is a personal repositories for my personal studies about some programing topics...
 
-## data_structures lists
+## Data_structures types
 Was create for studies porposes based on the articles
 
 https://medium.com/amiralles/mastering-data-structures-in-ruby-linked-lists-708347a30360 \
@@ -8,7 +8,7 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-doubly-linked-lis
 https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-lists-8bd35769cc5 \
 https://medium.com/amiralles/stacks-are-a-special-kind-of-linked-lists-that-allow-us-to-efficiently-store-retrieve-data-in-last-9efab58fd100
 
-# Interface
+## Interface
 
 ### SinglyLinked
 
