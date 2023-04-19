@@ -55,3 +55,15 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 |`#move_next`|`Sets the current node to point to the next node in the list`|O(1)|
 |`#full_scan`|`Traverses all elements in the list starting from the head node`|O(n)|
 |`#print`|`Prints the contents of the list`|O(n)|
+
+### Stack
+
+| Method | Summary | Complexity |
+| ------ | ------- |-----------|
+|`#initialize`|`Initializes an Empty stack`|O(1)|
+|`#push(item)`|`Inserts a new item into the stack`|O(1)|
+|`#pop`|`Removes an item from the top of the stack`|O(1)|
+|`#peek`|`Returns the item that's the top of the stack`|O(1)|
+|`#clear`|`Pop all elements from the stack`|O(n)|
+|`#each`|`Loops over the stack yielding one element at a time`|O(n)|
+|`#print`|`Prints the contents of the stack`|O(n)|
