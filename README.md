@@ -69,3 +69,18 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-l
 |`#clear`|`Pop all elements from the stack`|O(n)|
 |`#each`|`Loops over the stack yielding one element at a time`|O(n)|
 |`#print`|`Prints the contents of the stack`|O(n)|
+
+
+### Persistent List
+
+| Method | Summary | Complexity |
+| ------ | ------- |-----------|
+|`#empty`|`Initializes an Empty list.`|O(n)|
+|`#insert(list,data)`|`Inserts a new item into a copy of the specific list.`|O(n)|
+|`#update(list,node,data)`|`Updates a value into a copy of the specified list.`|O(n)|
+|`#remove(list,node)`|`Removes an item from a copy of the specified list.`|O(n)|
+|`#cat(list1,list2)`|`Creates a list that contains a copy of all nodes from list1 and list2.`|O(n)|
+|`#len(list)`|`Returns a number of elements on the specified list.`|O(1)|
+|`#find_first(list,&predicate)`|`Returns the first element that matches the predicate on the specified list.`|O(n)|
+|`#each(list,&block)`|`Loops over the specified list calling the given block passing one element at a time.`|O(n)|
+|`#print(list)`|`Print the contents of the specified list.`|O(n)|
