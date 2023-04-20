@@ -110,6 +110,17 @@ class LinkedList
     each { |item| ar << item.data }
     p ar
   end
+
+  # Persistent List method
+  def reuse_from_node(node)
+    return self if node.nil?
+
+    while node
+      insert node.data
+      node = node.next
+    end
+    self
+  end
 end
 
 =begin
