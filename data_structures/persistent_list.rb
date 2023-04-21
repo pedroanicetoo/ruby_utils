@@ -35,7 +35,23 @@ class PersistentList
       end
       new_list.insert(nd.data)
     end
-    new_list
+    new_list.freeze
+  end
+
+  def self.remove(list, node)
+    new_list =  LinkedList.new
+    found = false
+    list.each do |nd|
+      if found
+        new_list = new_list.reuse_from_node(nd)
+        break
+      end
+      if found = (nd.data == node.data)
+        next
+      end
+      new_list.insert(nd.data)
+    end
+    new_list.freeze
   end
 
 
