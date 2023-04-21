@@ -22,36 +22,11 @@ class PersistentList
   end
 
   def self.update(list, node, data)
-    new_list = LinkedList.new
-    found = false
-    list.each do |nd|
-      if found
-        new_list = new_list.reuse_from_node(nd)
-        break
-      end
-      if found = (node.data == nd.data)
-        new_list.insert(data)
-        next
-      end
-      new_list.insert(nd.data)
-    end
-    new_list.freeze
+    remove_or_update_steps(list, node, data)
   end
 
   def self.remove(list, node)
-    new_list =  LinkedList.new
-    found = false
-    list.each do |nd|
-      if found
-        new_list = new_list.reuse_from_node(nd)
-        break
-      end
-      if found = (nd.data == node.data)
-        next
-      end
-      new_list.insert(nd.data)
-    end
-    new_list.freeze
+    remove_or_update_steps(list, node)
   end
 
 
@@ -62,6 +37,23 @@ class PersistentList
       new_list = LinkedList.new
       new_list.each { |node| new_list.insert node.data }
       new_list
+    end
+
+    def remove_or_update_steps(list, node, data = nil)
+      new_list =  LinkedList.new
+      found = false
+      list.each do |nd|
+        if found
+          new_list = new_list.reuse_from_node(nd)
+          break
+        end
+        if found = (nd.data == node.data)
+          new_list.insert(data) if data
+          next
+        end
+        new_list.insert(nd.data)
+      end
+      new_list.freeze
     end
   end
 
