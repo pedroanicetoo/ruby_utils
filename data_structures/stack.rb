@@ -22,9 +22,10 @@ class Stack
     if @length == 0
       @tail = node
     end
-    node.next = self.head
+    node.next = @head
     @head = node
     @length += 1
+    self
   end
 
   def pop
@@ -33,6 +34,7 @@ class Stack
     @head = @head.next
     @tail = nil if @length == 1
     @length -= 1
+    self
   end
 
   def peek
@@ -60,3 +62,63 @@ class Stack
   end
 
 end
+
+=begin
+  USAGE EXAMPLES
+
+  s = Stack.new
+
+  .push(data) => (Stack)
+  s.push(1)
+  --
+  1 (node)
+  --
+  .pop(data) => (Stack)
+  --
+  --
+
+  .peek => (node)
+  s.push 1
+  s.push 2
+  --
+  2 (node)
+  1 (node)
+  --
+  s.peek
+  -> #<Node:0x00007fdf15eaa870 @data=2, @next=#<Node:0x00007fdf16319ca8 @data=1, @next=nil>>
+
+  .clear => nil
+  s.push 1
+  s.push 2
+  --
+  2
+  1
+  --
+  s.clear
+  --
+  --
+
+  .each => nil
+  s.push 1
+  s.push 2
+  --
+  2
+  1
+  --
+  s.each { |node| puts "match!" if node.data == 2 }
+  -> match!
+  -> nil
+
+  .print => (string || nil) // yes, its nil, but on my humble opinion the sequencial puts command is better to represents a stack
+  s.push 1
+  s.push 2
+  --
+  2
+  1
+  --
+  s.print
+  -> 2
+  -> 1
+  -> nil
+
+=end
