@@ -98,7 +98,7 @@ end
   USAGE EXAMPLES
 
   dl = DubleLinkedList.new
-  #insert => (node)
+  .insert => (node)
   n1 = dl.insert 1
   -> [1]
   n2 = dl.insert 2
@@ -106,13 +106,13 @@ end
   n3 = dl.insert 3
   -> [1, 2, 3]
 
-  #remove => (self)
+  .remove => (self)
   dl.remove n1 // head case
   -> [2, 3]
   dl.remove n2 // not head case
   -> [3]
 
-  #cat => (self)
+  .cat => (self)
   dl1 = DubleLinkedList.new
   dl2 = DubleLinkedList.new
   dl1.insert 1
@@ -124,14 +124,14 @@ end
   dl1.cat dl2
   -> [1, 2, 3]
 
-  #clear => (self)
+  .clear => (self)
   dl = DubleLinkedList.new
   dl.insert 1
   dl.insert 2
   dl.clear
   -> [] (its not the output, just a visual representation)
 
-  #find_first &predicate => (node)
+  .find_first &predicate => (node)
   dl = DubleLinkedList.new
   dl.insert({a:'bar', b:10})
   -> [{a:'foo', b:10}]
@@ -142,7 +142,7 @@ end
   dl.find_first { |item| item[:a] == 'foo' }
   -> {a:'foo', b: 10}
 
-  #find_last &predicate => (node)
+  .find_last &predicate => (node)
   dl = DubleLinkedList.new
   dl.insert({a:'bar', b:10})
   -> [{a:'foo', b:10}]
@@ -153,7 +153,7 @@ end
   dl.find_last { |item| item[:a] == 'bar' }
   -> {a:'bar', b: 20}
 
-  #each &predicate => (nil || block return)
+  .each &predicate => (nil || block return)
   dl = DubleLinkedList.new
   dl.insert true
   dl.insert false
@@ -164,12 +164,12 @@ end
   -> no
   -> yes
 
-  #print => (Array)
+  .print => (Array)
 
   dl.print
   -> [true, false, true]
 
-  #reverse_each &predicate => (nil || block return)
+  .reverse_each &predicate => (nil || block return)
   dl = DubleLinkedList.new
   dl.insert true
   dl.insert true
@@ -180,7 +180,7 @@ end
   -> yes
   -> yes
 
-  #reverse_print => (Array)
+  .reverse_print => (Array)
 
   dl.reverse_print
   -> [false, true, true]

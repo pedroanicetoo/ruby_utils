@@ -132,7 +132,7 @@ end
   USAGE EXAMPLES
 
   cl = CircularList.new
-  #insert => (node)
+  .insert => (node)
   n1 = cl.insert 1
   ... -> [1] -> [1] ...
   n2 = cl.insert 2
@@ -140,47 +140,47 @@ end
   n3 = cl.insert 3
   ... -> [1] -> [2] -> [3] -> [1] -> [2] -> [3] ...
 
-  #insert_next => (self)
+  .insert_next => (self)
   cl.insert_next(n2, 4)
   ... -> [1] -> [2] -> [4] -> [3] -> [1] -> [2] -> [4] -> [3] ...
 
-  #remove => (self)
+  .remove => (self)
   cl.remove n1 // head case
   ... -> [1] -> [2] -> [1] -> [2] ...
   cl.remove n2 // not head case
   ... -> [3] -> [3] ...
 
-  #remove_next => (integer)
+  .remove_next => (integer)
   (with a list: ... -> [1] -> [2] -> [3] -> [1] -> [2] -> [3] ...)
-  cl.remove_next(n1) # removing [2] node
+  cl.remove_next(n1) // removing [2] node
   ... -> [1] -> [3] -> [1] -> [3] ...
 
-  #clear => (self)
+  .clear => (self)
   cl.insert 1
   cl.insert 2
   cl.clear
   -> [] (its not the output, just a visual representation)
 
-  #move_next => (node)
+  .move_next => (node)
   n1 = cl.insert 1
   n2 = cl.insert 2
   cl.current = n1 // set current
   cl.move_next
   -> [2] (n2)
 
-  #full_scan => (block return || nil)
+  .full_scan => (block return || nil)
   (with a list: ... -> [1] -> [2] -> [3] -> [1] -> [2] -> [3] ...)
   cl.full_scan { |x| p x.data if x.data <= 2}
   -> 1
   -> 2
   -> nil
 
-  #find_first &predicate => (node || nil)
+  .find_first &predicate => (node || nil)
   (with a list: ... -> [1] -> [2] -> [3] -> [1] -> [2] -> [3] ...)
   cl.find_first { |node| p node if node.data == 2}
   -> [2] // #<Node:0x00007f1d0139f358 ...>>>>
 
-  #print => (Array)
+  .print => (Array)
   cl = CircularList.new
   n1 = cl.insert 1
   n2 = cl.insert 2
