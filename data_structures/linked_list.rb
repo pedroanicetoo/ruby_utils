@@ -108,7 +108,7 @@ class LinkedList
 
     ar = []
     each { |item| ar << item.data }
-    p ar
+    ar
   end
 
   # Persistent List method
@@ -182,7 +182,7 @@ end
   -> no
   -> yes
 
-  .print => (Array)
+  .print => (String)
 
   sl.print
   -> [true, false, true]

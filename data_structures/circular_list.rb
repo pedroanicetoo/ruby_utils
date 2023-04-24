@@ -122,7 +122,7 @@ class CircularList
 
     arr = []
     full_scan { |item| arr << item.data }
-    p arr
+    arr
   end
 
 end

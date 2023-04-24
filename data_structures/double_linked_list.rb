@@ -90,7 +90,7 @@ class DubleLinkedList < LinkedList
 
     arr = []
     reverse_each { |item| arr << item.data }
-    p arr
+    arr
   end
 end
 
