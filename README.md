@@ -6,8 +6,9 @@ Was create for studies porposes based on the articles
 https://medium.com/amiralles/mastering-data-structures-in-ruby-linked-lists-708347a30360 \
 https://medium.com/amiralles/mastering-data-structures-in-ruby-doubly-linked-lists-e5e5aff5ff67 \
 https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-lists-8bd35769cc5 \
-https://medium.com/amiralles/stacks-are-a-special-kind-of-linked-lists-that-allow-us-to-efficiently-store-retrieve-data-in-last-9efab58fd100\
-https://medium.com/amiralles/mastering-data-structures-in-ruby-persistent-lists-d1449e8c4c99\
+https://medium.com/amiralles/stacks-are-a-special-kind-of-linked-lists-that-allow-us-to-efficiently-store-retrieve-data-in-last-9efab58fd100 \
+https://medium.com/amiralles/mastering-data-structures-in-ruby-persistent-lists-d1449e8c4c99 \
+https://medium.com/amiralles/mastering-data-structures-in-ruby-graphs-caa5892d50b1
 
 
 ## Interface
