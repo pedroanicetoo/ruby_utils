@@ -1,5 +1,19 @@
 require_relative 'linked_list'
 
+# monkey patched: add one method to use
+class LinkedList
+  def reuse_from_node(node)
+    return self if node.nil?
+
+    while node
+      insert node.data
+      node = node.next
+    end
+    self
+  end
+end
+
+
 class PersistentList
 
   def self.insert(list, data)
