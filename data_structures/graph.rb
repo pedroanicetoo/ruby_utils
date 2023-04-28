@@ -10,8 +10,7 @@ class Vertex
   end
 end
 
-# monkey patch on linked_list
-
+#(LinkedList monkey-patched)
 class LinkedList
   def insert(vertex)
     return if vertex.key.nil?
@@ -38,10 +37,21 @@ class LinkedList
     current
   end
 
-  # TODO: refactory this method
-  def remove_next prev_vertex
-    remove(prev_vertex.next)
+  def remove_next(prev_vertex)
+    return unless @length > 0
+
+    unless prev_vertex
+      @head = @head.next # default remove
+    else
+      old = prev_vertex.next
+      prev_vertex.next = prev_vertex.next&.next
+      if old == @head
+        @head = old.next
+      end
+    end
+
     @length -= 1
+    self
   end
 end
 
@@ -70,25 +80,26 @@ class Graph
     v1.edges << v2.key
   end
 
-  # not ready yet
-  # def remove_vertex key
-  #   found  = false
-  #   target = nil
-  #   prev   = nil
-  #   @vertices.each do |v|
-  #     next if v.edges.include?(key)
+  def remove_vertex key
+    found  = false
+    target = nil
+    prev   = nil
+    @vertices.each do |v|
+      return if v.edges.include?(key)
 
-  #     if v.key == key
-  #       found  = true
-  #       target = v
-  #     end
-  #     prev = v
-  #   end
+      if v.key == key
+        found  = true
+        target = v
+      end
 
-  #   return if !found || (target.edges.size == 0)
+      prev = v unless found
+    end
 
-  #   @vertices.remove_next(prev)
-  # end
+    return unless found
+    return if target.edges.size != 0
+
+    @vertices.remove_next(prev)
+  end
 
   def remove_edge(key1, key2)
     # TODO
