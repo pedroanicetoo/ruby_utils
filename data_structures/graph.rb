@@ -80,6 +80,7 @@ class Graph
     v1.edges << v2.key
   end
 
+  # remove only solitary vertices
   def remove_vertex key
     found  = false
     target = nil
@@ -90,23 +91,30 @@ class Graph
       if v.key == key
         found  = true
         target = v
+        break
+      else
+        prev = v
       end
-
-      prev = v unless found
     end
 
-    return unless found
-    return if target.edges.size != 0
+    return if !found || (target.edges.size != 0)
 
     @vertices.remove_next(prev)
   end
 
   def remove_edge(key1, key2)
-    # TODO
+    vertex = find_vertex(key1)&.key
+
+    return unless vertex
+
+    vertex.edges - [key2]
   end
 
   def adjacent?(key1, key2)
-    # TODO
+    vertex = find_vertex(key1)&.key
+    return true if vertex&.edges.include? key2
+
+    false
   end
 
   def find_vertex key
