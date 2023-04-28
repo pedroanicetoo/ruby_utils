@@ -37,6 +37,12 @@ class LinkedList
     end
     current
   end
+
+  # TODO: refactory this method
+  def remove_next prev_vertex
+    remove(prev_vertex.next)
+    @length -= 1
+  end
 end
 
 class Graph
@@ -64,9 +70,25 @@ class Graph
     v1.edges << v2.key
   end
 
-  def remove_vertex(key)
-    # TODO
-  end
+  # not ready yet
+  # def remove_vertex key
+  #   found  = false
+  #   target = nil
+  #   prev   = nil
+  #   @vertices.each do |v|
+  #     next if v.edges.include?(key)
+
+  #     if v.key == key
+  #       found  = true
+  #       target = v
+  #     end
+  #     prev = v
+  #   end
+
+  #   return if !found || (target.edges.size == 0)
+
+  #   @vertices.remove_next(prev)
+  # end
 
   def remove_edge(key1, key2)
     # TODO
@@ -81,7 +103,11 @@ class Graph
   end
 
   def print
-    # TODO
+    @vertices.each do |v|
+      puts "#{v.key} (vertex)"
+      v.edges.each do |e|
+        puts "    #{e} (edge)"
+      end
+    end
   end
-
 end
