@@ -130,3 +130,19 @@ class Graph
     end
   end
 end
+
+=begin
+  USAGE EXAMPLES
+
+g = Graph.new
+g.insert_vertex 1
+g.insert_vertex 2
+g.insert_vertex 3
+g.insert_vertex 4
+g.insert_edge(1, 2)
+g.insert_edge(2, 1)
+g.insert_edge(3, 1)
+g.remove_vertex(2)
+g.remove_vertex(4)
+
+=end
