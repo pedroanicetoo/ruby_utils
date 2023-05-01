@@ -111,7 +111,7 @@ class Graph
   end
 
   def adjacent?(key1, key2)
-    vertex = find_vertex(key1)&.key
+    vertex = find_vertex(key1)
     return true if vertex&.edges.include? key2
 
     false
@@ -134,15 +134,34 @@ end
 =begin
   USAGE EXAMPLES
 
-g = Graph.new
-g.insert_vertex 1
-g.insert_vertex 2
-g.insert_vertex 3
-g.insert_vertex 4
-g.insert_edge(1, 2)
-g.insert_edge(2, 1)
-g.insert_edge(3, 1)
-g.remove_vertex(2)
-g.remove_vertex(4)
+  g = Graph.new
+  g.insert_vertex 1
+  g.insert_vertex 2
+  g.insert_vertex 3
+  g.insert_vertex 4
+  -> vertices : [key: 1, edges: []], [key: 2, edges: []], [key: 3, edges: []], [key: 4, edges: []]
+
+  g.insert_edge(1, 2)
+  g.insert_edge(2, 1)
+  g.insert_edge(3, 1)
+  -> vertices : [key: 1, edges: [2]], [key: 2, edges: [1]], [key: 3, edges: [1]], [key: 4, edges: []]
+  g.remove_vertex(2)
+  -> vertices : [key: 1, edges: [2]], [key: 2, edges: [1]], [key: 3, edges: [1]], [key: 4, edges: []] # does not remove because have edge
+  g.remove_vertex(4)
+  -> vertices : [key: 1, edges: [2]], [key: 2, edges: [1]], [key: 3, edges: [1]]]
+  g.adjacent?(1, 3)
+  -> false
+  g.adjacent?(3, 1)
+  -> true
+  g.find_vertex(3)
+  -> #<Vertex:0x00007fe799852478 @edges=[1], @key=3, @next=nil>
+  g.print
+
+  1 (vertex)
+    2 (edge)
+  2 (vertex)
+    1 (edge)
+  3 (vertex)
+    1 (edge)
 
 =end

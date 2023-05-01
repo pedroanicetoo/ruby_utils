@@ -84,3 +84,16 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-graphs-caa5892d50
 |`#find_first(list,&predicate)`|`Returns the first element that matches the predicate on the specified list.`|O(n)|
 |`#each(list,&block)`|`Loops over the specified list calling the given block passing one element at a time.`|O(n)|
 |`#print(list)`|`Print the contents of the specified list.`|O(n)|
+
+
+### Graph
+
+| Method | Summary | Complexity |
+| ------ | ------- |-----------|
+|`#insert_vertex(key)`|`Adds a vertex (node) to the graph.`|O(1)|
+|`#insert_edge(key1, key2)`|`Connects two vertices by adding an edge to the graph.`|O(n)|
+|`#remove_vertex(key)`|`Removes a vertex to the graph.`|O(n+e)|
+|`#remove_edge(key1, key2)`|`Disconects two vertices by removing the edge that connects them.`|O(n)|
+|`#adjacent?(key1, key2)`|`Tells if two vertices are adjacent or not.`|O(n)|
+|`#find_vertex(key)`|`Finds a vertex in the current graph.`|O(1)|
+|`#print`|`Prints the contents of the current graph`|O(n+e)|
