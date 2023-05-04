@@ -9,6 +9,9 @@ class Node
   end
 end
 
+
+# WARNING: This binary tree is unbalanced and unordered
+
 class BTree
   attr_accessor :root, :size
 

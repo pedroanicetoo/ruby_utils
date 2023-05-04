@@ -8,7 +8,8 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-doubly-linked-lis
 https://medium.com/amiralles/mastering-data-structures-in-ruby-circular-linked-lists-8bd35769cc5 \
 https://medium.com/amiralles/stacks-are-a-special-kind-of-linked-lists-that-allow-us-to-efficiently-store-retrieve-data-in-last-9efab58fd100 \
 https://medium.com/amiralles/mastering-data-structures-in-ruby-persistent-lists-d1449e8c4c99 \
-https://medium.com/amiralles/mastering-data-structures-in-ruby-graphs-caa5892d50b1
+https://medium.com/amiralles/mastering-data-structures-in-ruby-graphs-caa5892d50b1 \
+https://medium.com/amiralles/mastering-data-structures-in-ruby-binary-trees-e7c001050a52
 
 
 ## Interface
@@ -97,3 +98,15 @@ https://medium.com/amiralles/mastering-data-structures-in-ruby-graphs-caa5892d50
 |`#adjacent?(key1, key2)`|`Tells if two vertices are adjacent or not.`|O(n)|
 |`#find_vertex(key)`|`Finds a vertex in the current graph.`|O(1)|
 |`#print`|`Prints the contents of the current graph`|O(n+e)|
+
+
+### Simple Binary Tree
+
+| Method | Summary | Complexity |
+| ------ | ------- |-----------|
+|`#insert_left(node, data)`|`Inserts a new node at the left child of the specified node.`|O(1)|
+|`#insert_right(node, data)`|`Inserts a new node at the right child of the specified node.`|O(1)|
+|`#remove_left(node)`|`Removes the subtree rooted at the left child of the specified node.`|O(n)|
+|`#remove_right(node)`|`Removes the subtree rooted at the right child of the specified node.`|O(n)|
+|`#merge(left, right)`|`Produces a new tree by merging left and right.`|O(n)|
+|`#print`|`Prints the contents of the current tree`|O(n)|
