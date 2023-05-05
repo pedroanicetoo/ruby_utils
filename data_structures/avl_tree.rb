@@ -21,6 +21,16 @@ class AvlTree
     @root = insert_and_balance(@root, key, data)
   end
 
+  def remove key
+    search(key)&.deleted = true
+  end
+
+  def search key
+    node = search_rec @root, key
+
+    return node unless node&.deleted
+  end
+
   def print
     print_rec @root, 0
   end
@@ -97,6 +107,13 @@ class AvlTree
   def rotate_right_left node
     node.right = rotate_right(node.right)
     rotate_left(node)
+  end
+
+  def search_rec(node, key)
+    return nil unless node
+    return search_rec(node.left, key)  if (key < node.key)
+    return search_rec(node.right, key) if (key > node.key)
+    node
   end
 
   def print_rec node, indent
