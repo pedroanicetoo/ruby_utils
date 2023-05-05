@@ -12,12 +12,10 @@ class Node
 end
 
 class AvlTree
-  attr_accessor :root, :size
 
-  def initialize(root)
-    @root = root
-    @size = 1
-  end
+  attr_accessor :root
+
+  def initialize; end
 
   def insert(key, data = nil)
     @root = insert_and_balance(@root, key, data)
@@ -47,18 +45,16 @@ class AvlTree
     set_height(node)
     if(height(node.left) - height(node.right) == 2)
       if (height(node.left.right) > height(node.left.left))
-        rotate_left_right(node)
-      else
-        rotate_right(node)
+        return rotate_left_right(node)
       end
+      return rotate_right(node)
     elsif(height(node.right) - height(node.left) == 2)
       if (height(node.right.left) > height(node.right.right))
         rotate_right_left(node)
-      else
-        rotate_left(node)
       end
+      return rotate_left(node)
     end
-    node
+    return node
   end
 
   def height node
@@ -108,10 +104,9 @@ class AvlTree
       puts "x".rjust(indent * 4, " ")
       return
     end
-
-    puts_key(node, indent)
-    print_rec(node.left, indent + 1)
-    print_rec(node.right, indent + 1)
+    puts_key node, indent
+    print_rec node.left, indent + 1
+    print_rec node.right, indent + 1
   end
 
   def puts_key(node, indent)
