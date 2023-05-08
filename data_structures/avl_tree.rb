@@ -32,7 +32,7 @@ class AvlTree
   end
 
   def print
-    print_rec @root, 0
+    print_rec @root
   end
 
   private
@@ -116,24 +116,12 @@ class AvlTree
     node
   end
 
-  def print_rec node, indent
-    unless node
-      puts "x".rjust(indent * 4, " ")
-      return
-    end
-    puts_key node, indent
-    print_rec node.left, indent + 1
-    print_rec node.right, indent + 1
-  end
+  def print_rec node
+    return unless node
 
-  def puts_key(node, indent)
-    txt = node.key.to_s
-    if node.deleted
-      txt += " (D)"
-      puts txt.rjust(indent * 8, " ")
-    else
-      puts txt.rjust(indent * 4, " ")
-    end
+    puts "key: #{node&.key || '-'} | left: #{node.left&.key || '-'} | right: #{node.right&.key || '-'}"
+    print_rec node.left
+    print_rec node.right
   end
 
 end
